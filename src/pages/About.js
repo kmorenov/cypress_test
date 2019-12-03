@@ -1,22 +1,23 @@
-import React, {useEffect, useState} from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const About = () => {
-    const [data, setData] = useState([])
+    const [data, setData] = useState()
 
-    const  getData = () => {
-        return fetch('http://localhost:4000/')
-            .then(res => res.json())
-            .then(res => setData([res]))
-            .catch(err => alert(err));
+    const getData = () => {
+
+        axios.get("https://api.frontegg.com/test").then(response => {
+            console.log("received response: " + response)
+            setData(response.data);
+        }).catch(error => console.log(error))
     }
 
     useEffect(() => {
         getData()
     }, []);
 
-    return <div>
-        {data.map((d) => d.data)}
+    return <div id="my-data-div">
+        {data && JSON.stringify(data)}
     </div>
 }
 
