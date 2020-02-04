@@ -20,15 +20,26 @@ const AllTodos = () => {
         fetch('https://jsonplaceholder.typicode.com/todos')
             .then(response => {
                 console.log('KM data 1: ', response)
-                return response.json()})
+                return response.json()
+            })
             .then(response => {
                 console.log('Fetched KM data 2: ', response)
-                setData(response)})
+                setData(response)
+            })
             .catch(error => console.log(error))
     }
 
+    async function fetchingAsync() {
+
+        const data = await fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(res => res.json())
+        setData(data)
+    }
+
     useEffect(() => {
-        fetching()// getData()
+        fetchingAsync()
+        // fetching()
+        // getData()
     }, []);
 
     return <div id="my-data-div">
