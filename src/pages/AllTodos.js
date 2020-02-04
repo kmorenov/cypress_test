@@ -28,8 +28,7 @@ const AllTodos = () => {
     }
 
     useEffect(() => {
-        // fetching()
-        getData()
+        fetching()// getData()
     }, []);
 
     return <div id="my-data-div">
