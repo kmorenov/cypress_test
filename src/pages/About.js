@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 const About = () => {
@@ -6,10 +6,12 @@ const About = () => {
 
     const getData = () => {
 
-        axios.get("https://api.frontegg.com/test").then(response => {
-            console.log("received response: " + response)
-            setData(response.data);
-        }).catch(error => console.log(error))
+        axios.get("https://api.frontegg.com/test")
+            .then(response => {
+                console.log("received response: ", response)
+                setData(response.data);
+            })
+            .catch(error => console.log(error))
     }
 
     useEffect(() => {

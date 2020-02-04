@@ -11,3 +11,13 @@ it('stub out ', function () {
 
     cy.get('#my-data-div').contains('fizzbuzz')
 })
+
+it('another try', () => {
+    cy
+        .server()
+        .route('https://api.frontegg.com/test', [{ title: 'KM' }]).as('reload')
+        .visit('http://localhost:3000/about')
+        .wait('@reload')
+
+        .get('#my-data-div').contains('KM')
+})
